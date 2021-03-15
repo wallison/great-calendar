@@ -28,19 +28,26 @@
         </el-dialog>
       </div>
       <div class="item" @click="handleOpenViewDialog">
-        <el-alert
+        <el-tooltip
           v-for="calendar in reminders.filter((item, index) => index < 2)"
           :key="calendar.id"
-          :style="'background-color:' + calendar.color"
+          class="item"
           effect="dark"
-          class="alert-small"
-          :closable="false">
-          <div
-            style="white-space: nowrap;"
-          >
-            {{calendar.text}}
-          </div>
-        </el-alert>
+          :content="calendar.text"
+          placement="top-start"
+        >
+          <el-alert
+            :style="'background-color:' + calendar.color"
+            effect="dark"
+            class="alert-small"
+            :closable="false">
+            <div
+              style="white-space: nowrap;"
+            >
+              {{ calendar.text }}
+            </div>
+          </el-alert>
+        </el-tooltip>
         <div class="view-more" v-if="reminders.length">view more</div>
         <el-dialog
           v-if="openViewDialog"
@@ -138,6 +145,7 @@ export default class DayBox extends Vue {
   .alert-small {
     text-align: left;
     height: 30px;
+    padding: 0;
   }
   .alert-view {
     margin-bottom: 10px;

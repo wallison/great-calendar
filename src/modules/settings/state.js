@@ -1,5 +1,5 @@
 export default {
-    calendarEvents: [],
-    error: false,
+  calendarEvents: [],
+  error: false,
 };
-//# sourceMappingURL=state.js.map
+// # sourceMappingURL=state.js.map

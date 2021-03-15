@@ -2,11 +2,12 @@ import state from './state';
 import getters from './getters';
 import actions from './actions';
 import mutations from './mutations';
+
 export default {
-    namespaced: true,
-    state,
-    getters,
-    actions,
-    mutations,
+  namespaced: true,
+  state,
+  getters,
+  actions,
+  mutations,
 };
-//# sourceMappingURL=index.js.map
+// # sourceMappingURL=index.js.map
