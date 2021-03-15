@@ -20,14 +20,12 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 import CalendarPanel from '@/modules/components/CalendarPanel.vue';
+import UtilsService from '../utils/utils-service';
 
 @Component({
   components: { CalendarPanel },
 })
 export default class MainPage extends Vue {
-  monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December',
-  ];
   date = new Date();
 
   created() {
@@ -40,7 +38,7 @@ export default class MainPage extends Vue {
   }
 
   get monthName() {
-    return this.monthNames[this.date.getMonth()];
+    return UtilsService.getMonthName(this.date);
   }
 
   decreaseMonth() {

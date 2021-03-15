@@ -18,7 +18,7 @@
         <el-dialog
           v-if="openSetDialog"
           :visible.sync="openSetDialog"
-          title="Set Reminders"
+          :title="setDialogTitle"
           append-to-body
           :before-close="() => (this.openSetDialog = false)"
         >
@@ -52,7 +52,7 @@
         <el-dialog
           v-if="openViewDialog"
           :visible.sync="openViewDialog"
-          title="View Reminders"
+          :title="viewDialogTitle"
           append-to-body
           :before-close="() => (this.openViewDialog = false)"
         >
@@ -78,6 +78,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 import { Getter } from 'vuex-class';
 import { ICalendarEvent } from '../settings/types';
 import ReminderForm from './ReminderForm.vue';
+import UtilsService from '../utils/utils-service';
 
 const namespace = 'settings';
 @Component({
@@ -101,9 +102,17 @@ export default class DayBox extends Vue {
     this.openViewDialog = true;
   }
 
-  get reminders() {
+  get reminders(): ICalendarEvent[] {
     return this.getRemindersByDate(this.date)
       .sort((a: ICalendarEvent, b: ICalendarEvent) => a.time.localeCompare(b.time));
+  }
+
+  get viewDialogTitle(): string {
+    return `View Reminders - ${this.date.getFullYear()}/${UtilsService.getMonthName(this.date)}/${this.date.getDate()}`;
+  }
+
+  get setDialogTitle(): string {
+    return `Set Reminders - ${this.date.getFullYear()}/${UtilsService.getMonthName(this.date)}/${this.date.getDate()}`;
   }
 }
 </script>

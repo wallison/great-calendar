@@ -59,6 +59,11 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 import DayBox from './DayBox.vue';
 import DisabledDayBox from './DisabledDayBox.vue';
 
+interface DayPosition {
+  day: number;
+  date: Date;
+}
+
 @Component({
   components: {
     DayBox,
@@ -76,38 +81,38 @@ export default class CalendarPanel extends Vue {
     const firstDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
     const daysNum = this.getDaysOfMonth(firstDate);
     const days = {
-      sunday: [] as any[],
-      monday: [] as any[],
-      tuesday: [] as any[],
-      wednesday: [] as any[],
-      thursday: [] as any[],
-      friday: [] as any[],
-      saturday: [] as any[],
+      sunday: [] as DayPosition[],
+      monday: [] as DayPosition[],
+      tuesday: [] as DayPosition[],
+      wednesday: [] as DayPosition[],
+      thursday: [] as DayPosition[],
+      friday: [] as DayPosition[],
+      saturday: [] as DayPosition[],
     };
     for (let i = 1; i <= daysNum; i += 1) {
       const testDate = new Date(firstDate.getFullYear(), firstDate.getMonth(), i);
       const dayOfWeek = testDate.getDay();
       switch (dayOfWeek) {
         case 0:
-          days.sunday.push({ day: i, date: testDate });
+          days.sunday.push({ day: i, date: testDate } as DayPosition);
           break;
         case 1:
-          days.monday.push({ day: i, date: testDate });
+          days.monday.push({ day: i, date: testDate } as DayPosition);
           break;
         case 2:
-          days.tuesday.push({ day: i, date: testDate });
+          days.tuesday.push({ day: i, date: testDate } as DayPosition);
           break;
         case 3:
-          days.wednesday.push({ day: i, date: testDate });
+          days.wednesday.push({ day: i, date: testDate } as DayPosition);
           break;
         case 4:
-          days.thursday.push({ day: i, date: testDate });
+          days.thursday.push({ day: i, date: testDate } as DayPosition);
           break;
         case 5:
-          days.friday.push({ day: i, date: testDate });
+          days.friday.push({ day: i, date: testDate } as DayPosition);
           break;
         case 6:
-          days.saturday.push({ day: i, date: testDate });
+          days.saturday.push({ day: i, date: testDate } as DayPosition);
           break;
         default:
           break;
