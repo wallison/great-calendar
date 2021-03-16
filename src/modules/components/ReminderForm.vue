@@ -127,7 +127,7 @@ export default class ReminderForm extends Vue {
   defineReminder() {
     const formName = 'form';
     const form: any = this.$refs[formName];
-    form.validate((valid: any) => {
+    form.validate((valid: boolean) => {
       if (valid) {
         const calendar = new CalendarEvent(
           this.date,
