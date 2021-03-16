@@ -1,5 +1,7 @@
 # great-calendar
 
+Completed calendar to set reminders.
+
 ## Project setup
 ```
 npm install
