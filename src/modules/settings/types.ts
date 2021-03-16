@@ -5,6 +5,7 @@ export interface ICalendarEvent {
   text: string;
   city: string;
   color: string;
+  weather?: string;
 }
 
 export interface ISettingsState {

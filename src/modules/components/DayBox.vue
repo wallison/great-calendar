@@ -56,17 +56,12 @@
           append-to-body
           :before-close="() => (this.openViewDialog = false)"
         >
-          <el-alert
+          <ReminderAlert
             v-for="calendar in reminders"
             :key="calendar.id"
-            effect="dark"
-            class="alert-view"
-            :style="'background-color:' + calendar.color"
-            :closable="false">
-            <div>
-              {{ calendar.time }} - {{ calendar.text }} / {{ calendar.city }}
-            </div>
-          </el-alert>
+            :reminder="calendar"
+            :date="date"
+          />
         </el-dialog>
       </div>
     </el-card>
@@ -78,11 +73,13 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 import { Getter } from 'vuex-class';
 import { ICalendarEvent } from '../settings/types';
 import ReminderForm from './ReminderForm.vue';
+import ReminderAlert from './ReminderAlert.vue';
 import UtilsService from '../utils/utils-service';
 
 const namespace = 'settings';
 @Component({
   components: {
+    ReminderAlert,
     ReminderForm,
   },
 })

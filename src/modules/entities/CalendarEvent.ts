@@ -7,6 +7,7 @@ export default class CalendarEvent implements ICalendarEvent {
   public text: string;
   public city: string;
   public color: string;
+  public weather?: string;
 
   constructor(eventDate: Date, time: string, text: string, city: string, color: string) {
     this.eventDate = eventDate;
